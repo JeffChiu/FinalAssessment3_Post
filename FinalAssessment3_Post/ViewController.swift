@@ -21,10 +21,10 @@ class ViewController: UIViewController {
         Alamofire.request(.GET, urlString, parameters: nil).responseJSON(){
                 response in
                 if let jsonData = response.result.value {
-                    print("response : \(jsonData)")
+                    //print("response : \(jsonData)")
                     let json = JSON(jsonData)
                     let originValue = json["origin"].stringValue
-                    print("origin value = \(originValue)")
+                    print("PART1 : origin value = \(originValue)")
                 }
         }
         
@@ -39,11 +39,11 @@ class ViewController: UIViewController {
             "time" : nowStr
             ]).responseJSON(){
             response in
-            if let jsonData = response.result.value {
-                print("response : \(jsonData)")
+            if let _ = response.result.value {
+                //print("response : \(jsonData)")
                 nowObj = NSDate()
                 let timestampEnd = nowObj.timeIntervalSince1970
-                print("請求回應時間： \(timestampEnd - timestampStart) 秒")
+                print("PART2 : 請求回應時間 = \(timestampEnd - timestampStart) 秒")
             }
         }
     }
